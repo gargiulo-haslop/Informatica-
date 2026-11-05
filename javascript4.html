@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Trivia de Conocimientos Generales</h1>
+    <h2>1. ¿Cuál es el planeta más grande del sistema solar?</h2>
+    <input type="radio" name="p1" value="a"> La Tierra<br>
+    <input type="radio" name="p1" value="b"> Júpiter<br>
+    <input type="radio" name="p1" value="c"> Marte<br>
+    <h2>2. ¿Cuántos continentes hay en la Tierra?</h2>
+    <input type="radio" name="p2" value="a"> 5<br>
+    <input type="radio" name="p2" value="b"> 6<br>
+    <input type="radio" name="p2" value="c"> 7<br>
+    <h2>3. ¿Cuál es el océano más grande del mundo?</h2>
+    <input type="radio" name="p3" value="a"> Atlántico<br>
+    <input type="radio" name="p3" value="b"> Índico<br>
+    <input type="radio" name="p3" value="c"> Pacífico<br>
+    <h2> 4. ¿Quién nació antes? </h2>
+    <input type="radio" name="p4" value="a"> Aristóteles <br>
+    <input type="radio" name="p4" value="a"> Tomás de Aquino <br>
+    <input type="radio" name="p4" value="a"> Agustín de Hipona <br>   
+    <h2> 5. ¿Cuál no es un lácteo? </h2>
+    <input type="radio" name="p4" value="a"> Leche de almendras <br>
+    <input type="radio" name="p4" value="a"> Leche de Buffala <br>
+    <input type="radio" name="p4" value="a"> Queso  <br>   
+    <h2> 6. ¿Quién fue a la Batalla de San Lorenzo? </h2>
+    <input type="radio" name="p4" value="a"> Manuel Belgrano <br>
+    <input type="radio" name="p4" value="a"> Jesús de Nazaret <br>
+    <input type="radio" name="p4" value="a"> San Martín <br>   
+    <br>
+    <button id="comprobar" type="button">Comprobar</button>
+    <button id="reiniciar" type="button">Reiniciar</button>
+    <p id="resultado"></p>
+    <script>
+    document.getElementById("comprobar").addEventListener("click", function() {
+    let puntaje = 0;
+    let p1 = document.querySelector('input[name="p1"]:checked');
+    let p2 = document.querySelector('input[name="p2"]:checked');
+    let p3 = document.querySelector('input[name="p3"]:checked');
+    let p4 = document.querySelector('input[name="p4"]:checked');
+    let p5 = document.querySelector('input[name="p5"]:checked');
+    let p6 = document.querySelector('input[name="p6"]:checked');
+
+    if (!p1 || !p2 || !p3|| !p4 || !p5 || !p6) {
+    document.getElementById("resultado").innerHTML =
+    "Debes responder las tres preguntas.";
+    return;
+    }
+    // Respuestas correctas
+    if (p1.value === "b") puntaje++;
+    if (p2.value === "a") puntaje++;
+    if (p3.value === "c") puntaje++;
+    if (p4.value === "a") puntaje++;
+    if (p5.value === "a") puntaje++;
+    if (p6.value === "c") puntaje++;
+    let mensaje = "<h3>Resultado: " + puntaje + "/6 puntos</h3>";
+    if (puntaje === 6) {
+    mensaje += "¡Felicitaciones! Has respondido correctamente todas las preguntas.";
+    } else if (puntaje === 5) {
+    mensaje += "Buen intento. Solo te equivocaste en una pregunta.";
+    } else {
+    mensaje += "Te invito a intentarlo nuevamente.";
+    }
+    document.getElementById("resultado").innerHTML = mensaje;
+    });
+    document.getElementById("reiniciar").addEventListener("click", function() {
+    let opciones = document.querySelectorAll('input[type="radio"]');
+    for (let opcion of opciones) {
+    opcion.checked = false;
+    }
+    document.getElementById("resultado").innerHTML = "";
+    });
+    </script>
+    </body>
+           
+</body>
+</html>
